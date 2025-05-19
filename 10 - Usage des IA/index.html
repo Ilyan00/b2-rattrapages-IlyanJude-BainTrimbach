@@ -2,19 +2,21 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Salade selon ton humeur</title>
+    <title>Salade by Mongoo</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
     <link href="./src/output.css" rel="stylesheet" />
   </head>
-  <body class="bg-amber-950 p-5 flex flex-col h-screen w-screen gap-4">
+  <body
+    class="bg-amber-950 p-5 flex flex-col h-screen w-screen gap-4 overflow-x-hidden"
+  >
     <img
       class="blur-sm w-screen h-screen object-cover absolute top-0 left-0 -z-50"
       src="./img/background.jpeg"
     />
     <header class="bg-white/50 rounded-xl p-4 font-bold shadow-2xl">
       <nav class="flex justify-between items-center p-4">
-        <p class="text-2xl">Mongoo</p>
+        <p class="text-2xl">Salade by <br />Mongoo</p>
         <ul class="flex space-x-4">
           <li class="hover:text-amber-950">
             <a href="#">Accueil</a>
@@ -64,21 +66,19 @@
         <p id="recetteResult"></p>
       </div>
       <div
-        class="flex justify-center items-end gap-4 w-full lg:w-1/2 h-full max-h-[700px] p-9 bg-white/50 rounded-xl shadow-2xl overflow-hidden"
+        class="flex justify-center items-end gap-4 w-full min-h-[500px] lg:w-1/2 h-full max-h-[700px] p-9 bg-white/50 rounded-xl shadow-2xl overflow-hidden"
       >
-        <div id="imagesContainer" class="w-4/5 h-4/5 relative">
-          <div id="bolContainer" class="w-full h-full relative">
-            <img
-              id="bolFront"
-              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 object-contain z-50 w-1/2"
-              src="./img/bol/bol_front.svg"
-            />
-            <img
-              id="bolBack"
-              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-[95%] object-contain z-0 w-1/2"
-              src="./img/bol/bol_back.svg"
-            />
-          </div>
+        <div id="imagesContainer" class="w-4/5 h-4/5 relative imagesContainer">
+          <img
+            id="bolFront"
+            class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 object-contain z-50 w-1/2"
+            src="./img/bol/bol_front.svg"
+          />
+          <img
+            id="bolBack"
+            class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-[95%] object-contain z-0 w-1/2"
+            src="./img/bol/bol_back.svg"
+          />
         </div>
       </div>
     </main>
