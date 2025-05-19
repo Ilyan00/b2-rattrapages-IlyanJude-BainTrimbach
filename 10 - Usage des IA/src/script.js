@@ -2,6 +2,8 @@ const inputBox = document.getElementById("inputHumeur");
 const submitBtn = document.getElementById("submitBtn");
 const recetteResult = document.getElementById("recetteResult");
 const sentimentResult = document.getElementById("sentimentResult");
+const imagesContainer = document.getElementById("imagesContainer");
+const bolContainer = document.getElementById("bolContainer");
 let sentiment;
 let salade;
 let score;
@@ -42,13 +44,90 @@ function gotResult(prediction) {
   score = prediction.confidence;
 
   if (score > 0.75) {
-    salade = "roquette, avocat, fraises, poulet grillé";
+    salade = "roquette, avocat, concombre";
   } else if (score > 0.4) {
-    salade = "laitue, œufs, tomates, maïs, emmental";
+    salade = "laitue, tomate, emmental";
   } else {
-    salade = "pâtes froides, thon, olives, œuf dur";
+    salade = "mâche, olive, oeuf";
   }
   sentimentResult.innerHTML = `${score.toFixed(2)} / 1`;
   progressBar.style.width = `${score * 100}%`;
   recetteResult.innerHTML = `Recette : ${salade}`;
+  displaySalade();
+}
+
+function displaySalade() {
+  bolContainer.style.animation = "RollAnimation 1s ease-in-out";
+  const saladeFront = document.createElement("img");
+  saladeFront.classList.add(
+    "absolute",
+    "left-1/2",
+    "-translate-x-1/2",
+    "top-1/2",
+    "-translate-y-[110%]",
+    "object-contain",
+    "z-[2]",
+    "w-1/4"
+  );
+  saladeFront.src = "./img/salade/salade_front.svg";
+  saladeFront.style.animation = "FallAnimation 1s ease-in-out";
+  imagesContainer.appendChild(saladeFront);
+
+  const saladeBack = document.createElement("img");
+  saladeBack.classList.add(
+    "absolute",
+    "left-1/2",
+    "-translate-x-1/2",
+    "top-1/2",
+    "-translate-y-full",
+    "object-contain",
+    "z-[1]",
+    "w-1/2"
+  );
+  saladeBack.src = "./img/salade/salade_back.svg";
+  saladeBack.style.animation = "FallAnimation 1s ease-in-out";
+  imagesContainer.appendChild(saladeBack);
+
+  const ingredientsArray = salade
+    .split(", ")
+    .map((ingredient) => ingredient.trim());
+
+  let i = 0;
+  ingredientsArray.forEach((ingredient) => {
+    console.log(i);
+    const ingredientImage = document.createElement("img");
+    if (i == 0) {
+    } else if (i == 1) {
+      ingredientImage.src = `./img/ingredients/${ingredient}.svg`;
+      ingredientImage.classList.add(
+        "absolute",
+        "left-1/2",
+        "translate-x-[20%]",
+        "top-1/2",
+        "-translate-y-[120%]",
+        "object-contain",
+        "z-[1]",
+        "w-1/5",
+        "rotate-15"
+      );
+      ingredientImage.style.animation = "FallAnimation 1s ease-in-out";
+      imagesContainer.appendChild(ingredientImage);
+    } else if (i == 2) {
+      ingredientImage.src = `./img/ingredients/${ingredient}.svg`;
+      ingredientImage.classList.add(
+        "absolute",
+        "left-1/2",
+        "-translate-x-[120%]",
+        "top-1/2",
+        "-translate-y-[120%]",
+        "object-contain",
+        "z-[1]",
+        "w-1/5",
+        "-rotate-10"
+      );
+      ingredientImage.style.animation = "FallAnimation 1s ease-in-out";
+      imagesContainer.appendChild(ingredientImage);
+    }
+    i++;
+  });
 }
