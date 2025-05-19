@@ -3,7 +3,6 @@ const submitBtn = document.getElementById("submitBtn");
 const recetteResult = document.getElementById("recetteResult");
 const sentimentResult = document.getElementById("sentimentResult");
 const imagesContainer = document.getElementById("imagesContainer");
-const bolContainer = document.getElementById("bolContainer");
 let sentiment;
 let salade;
 let score;
@@ -57,6 +56,21 @@ function gotResult(prediction) {
 }
 
 function displaySalade() {
+  imagesContainer.innerHTML = `
+  <div id="bolContainer" class="w-full h-full relative">
+    <img
+      id="bolFront"
+      class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 object-contain z-50 w-1/2"
+      src="./img/bol/bol_front.svg"
+    />
+    <img
+      id="bolBack"
+      class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-[95%] object-contain z-0 w-1/2"
+      src="./img/bol/bol_back.svg"
+      />
+  </div>
+  `;
+  const bolContainer = document.getElementById("bolContainer");
   bolContainer.style.animation = "RollAnimation 1s ease-in-out";
   const saladeFront = document.createElement("img");
   saladeFront.classList.add(
