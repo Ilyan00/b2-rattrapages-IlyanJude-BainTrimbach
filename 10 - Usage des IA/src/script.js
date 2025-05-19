@@ -4,6 +4,7 @@ const recetteResult = document.getElementById("recetteResult");
 const sentimentResult = document.getElementById("sentimentResult");
 let sentiment;
 let salade;
+let score;
 
 function preload() {
   sentiment = ml5.sentiment("movieReviews");
@@ -18,6 +19,14 @@ function setup() {
 
 function getSentiment() {
   const texte = inputBox.value;
+  if (texte == "") {
+    sentimentResult.innerHTML = "0 / 1";
+    score = 0;
+    progressBar.style.width = `${score * 100}%`;
+    recetteResult.innerHTML =
+      "Tu dois écrire un texte pour que je puisse te proposer une salade";
+    return;
+  }
   console.log("Texte entré :", texte);
   sentiment.predict(texte, gotResult);
 }
@@ -30,7 +39,7 @@ function gotResult(prediction) {
     return;
   }
 
-  const score = prediction.confidence;
+  score = prediction.confidence;
 
   if (score > 0.75) {
     salade = "roquette, avocat, fraises, poulet grillé";
@@ -40,5 +49,6 @@ function gotResult(prediction) {
     salade = "pâtes froides, thon, olives, œuf dur";
   }
   sentimentResult.innerHTML = `${score.toFixed(2)} / 1`;
+  progressBar.style.width = `${score * 100}%`;
   recetteResult.innerHTML = `Recette : ${salade}`;
 }
