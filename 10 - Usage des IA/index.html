@@ -64,8 +64,23 @@
         <p id="recetteResult"></p>
       </div>
       <div
-        class="flex flex-col gap-4 w-full lg:w-1/2 h-full max-h-[700px] p-9 bg-white/50 rounded-xl shadow-2xl"
-      ></div>
+        class="flex justify-center items-end gap-4 w-full lg:w-1/2 h-full max-h-[700px] p-9 bg-white/50 rounded-xl shadow-2xl overflow-hidden"
+      >
+        <div id="imagesContainer" class="w-4/5 h-4/5 relative">
+          <div id="bolContainer" class="w-full h-full relative">
+            <img
+              id="bolFront"
+              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 object-contain z-50 w-1/2"
+              src="./img/bol/bol_front.svg"
+            />
+            <img
+              id="bolBack"
+              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-[95%] object-contain z-0 w-1/2"
+              src="./img/bol/bol_back.svg"
+            />
+          </div>
+        </div>
+      </div>
     </main>
     <script src="src/script.js"></script>
   </body>
