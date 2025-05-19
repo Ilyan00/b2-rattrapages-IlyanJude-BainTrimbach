@@ -1,5 +1,6 @@
 const inputBox = document.getElementById("inputHumeur");
 const submitBtn = document.getElementById("submitBtn");
+const recetteResult = document.getElementById("recetteResult");
 const sentimentResult = document.getElementById("sentimentResult");
 let sentiment;
 let salade;
@@ -24,7 +25,7 @@ function getSentiment() {
 function gotResult(prediction) {
   console.log("Prédiction reçue :", prediction);
   if (!prediction || typeof prediction.confidence !== "number") {
-    sentimentResult.html("Erreur : impossible d'analyser. Réessaie.");
+    recetteResult.html("Erreur : impossible d'analyser. Réessaie.");
     console.error("Erreur : prediction invalide →", prediction);
     return;
   }
@@ -32,11 +33,12 @@ function gotResult(prediction) {
   const score = prediction.confidence;
 
   if (score > 0.75) {
-    salade = "La joix";
+    salade = "roquette, avocat, fraises, poulet grillé";
   } else if (score > 0.4) {
-    salade = "pas trop la joix";
+    salade = "laitue, œufs, tomates, maïs, emmental";
   } else {
-    salade = "triste";
+    salade = "pâtes froides, thon, olives, œuf dur";
   }
-  sentimentResult.innerHTML = `Score : ${score.toFixed(2)}<br>${salade}`;
+  sentimentResult.innerHTML = `${score.toFixed(2)} / 1`;
+  recetteResult.innerHTML = `Recette : ${salade}`;
 }

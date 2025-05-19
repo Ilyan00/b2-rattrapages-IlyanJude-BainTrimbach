@@ -5,17 +5,68 @@
     <title>Salade selon ton humeur</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
+    <link href="./src/output.css" rel="stylesheet" />
   </head>
-  <body>
-    <h1>Quelle est ton humeur ?</h1>
-    <p>Écris une phrase et découvre ta salade idéale</p>
-    <input
-      id="inputHumeur"
-      type="text"
-      value="Aujourd'hui je me sens au top !"
+  <body class="bg-amber-950 p-5 flex flex-col h-screen w-screen gap-4">
+    <img
+      class="blur-sm w-screen h-screen object-cover absolute top-0 left-0 -z-50"
+      src="./img/background.jpeg"
     />
-    <button id="submitBtn">Propose moi une salade</button>
-    <p id="sentimentResult"></p>
-    <script src="script.js"></script>
+    <header class="bg-white/50 rounded-xl p-4 font-bold shadow-2xl">
+      <nav class="flex justify-between items-center p-4">
+        <p class="text-2xl">Mongoo</p>
+        <ul class="flex space-x-4">
+          <li class="hover:text-amber-950">
+            <a href="#">Accueil</a>
+          </li>
+          <li class="hover:text-amber-950">
+            <a href="#">À propos</a>
+          </li>
+          <li class="hover:text-amber-950">
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="flex-1 flex gap-4">
+      <div
+        class="flex flex-col gap-8 w-1/2 h-full p-9 bg-white/50 rounded-xl shadow-2xl"
+      >
+        <h1 class="text-6xl font-black text-amber-950">
+          Compose ta salade pour ce soir
+        </h1>
+        <p class="text-2xl">
+          Commence par écrire comment s'est passée ta journée et les émotions
+          que tu as ressenties
+        </p>
+        <div class="flex gap-4">
+          <input
+            id="inputHumeur"
+            type="text"
+            value="Aujourd'hui je me sens au top !"
+            class="w-4/5 p-4 rounded-xl border-2 border-amber-900 bg-white/20 focus:border-amber-950 focus:outline-none"
+          />
+          <button
+            id="submitBtn"
+            class="bg-amber-900 text-white p-4 rounded-xl hover:bg-amber-950"
+          >
+            Propose moi une salade
+          </button>
+        </div>
+        <p id="sentimentResult" class="text-2xl"></p>
+        <div class="w-full bg-white/50 rounded-full h-4 overflow-hidden">
+          <div
+            id="progressBar"
+            class="bg-amber-950 h-full w-0 transition-all duration-300"
+          ></div>
+        </div>
+
+        <p id="recetteResult"></p>
+      </div>
+      <div
+        class="flex flex-col gap-4 w-1/2 h-full p-9 bg-white/50 rounded-xl shadow-2xl"
+      ></div>
+    </main>
+    <script src="src/script.js"></script>
   </body>
 </html>
