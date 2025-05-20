@@ -11,7 +11,7 @@ Salade by Mongoo est une application web qui utilise l'analyse de sentiment pour
 1. Clonez le repository :
 
 ```bash
-git clone [URL_DU_REPO]
+git clone https://github.com/Ilyan00/b2-rattrapages-IlyanJude-BainTrimbach
 ```
 
 2. Installez les dépendances :
